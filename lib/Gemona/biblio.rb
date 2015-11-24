@@ -1,3 +1,5 @@
+include Comparable
+
 class Biblio
     
      attr_accessor :autores, :titulo, :fecha, :id
@@ -12,6 +14,9 @@ class Biblio
       "#{@autores.join(",")}\n#{@titulo}\n#{@fecha}\n#{@id}"
    end
 
+    def <=>(otro)
+        id<=>otro.id
+    end
     
 end
 

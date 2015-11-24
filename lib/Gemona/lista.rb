@@ -1,3 +1,4 @@
+include Enumerable
 
 Nodo = Struct.new(:value, :next, :prev)
      
@@ -60,4 +61,16 @@ class Lista
     def to_s
          @cabeza.to_s 
     end
+    
+    def each
+        while @cabeza != @cola
+            yield @cabeza.value
+            @cabeza=@cabeza.prev
+        end
+        
+        if @cabeza == @cola
+            yield @cola.value
+        end
+    end
+
 end 
