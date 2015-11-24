@@ -68,9 +68,14 @@ class Lista
             @cabeza=@cabeza.prev
         end
         
-        if @cabeza == @cola
+       if @cabeza == @cola
+           if @cabeza == nil 
+            nil 
+           else
             yield @cola.value
-        end
+           end
+           
+       end
     end
 
 end 

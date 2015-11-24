@@ -1,6 +1,8 @@
-include Comparable
+
 
 class Biblio
+
+include Comparable
     
      attr_accessor :autores, :titulo, :fecha, :id
 

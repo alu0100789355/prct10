@@ -287,5 +287,37 @@ context "Prueba Lista enumerable" do
   end
   
 
+
+context 'Bibliografia Enumerable' do
+    
+   before :each do 
+       @libraso = Libro.new(["Dave Thomas, Andy Hunt, Chad Fowler"],"Programming Ruby 1.9 & 2.0: The Pragmatic Programmers","Guide. (The Facets of Ruby).","Pragmatic Bookshelf","4 edition","(July 7, 2013)",["ISBN-13: 978-1937785499,ISBN-10: 1937785491."],1)
+       @revista=Revista.new(["Antonio Pérez, Lucas Fernandez"],"Pc facil Ruby Version 1.2","16 de Noviembre de 2015",74,"ISSN-123456789101112")
+       @documentoe2= DocumentoElectronico.new(["elcoche.es"],"Todo lo relacionado con los coches","4 Mayo 2015",32,"http://www.elcoche.es/videcurso-todos-los-pasos-de-tu-coche")
+   end
+   
+    it 'Comparamos que revista menor que documentoe' do
+      expect(@documentoe2 < @revista).to eq(true) 
+   end
+    it 'Comparamos que libro menor que revista' do
+       expect(@libraso < @revista).to eq(true) 
+   end
+    it 'Comparamos que documentoe mayor que libraso' do
+       expect(@documentoe2 > @libraso).to eq(true) 
+   end
+    it 'Comparamos que revista es mayor que libro' do
+       expect(@revista > @libraso).to eq(true) 
+   end
+    it 'Comparamos que libro es igual que libro' do
+       expect(@libraso == @libraso).to eq(true) 
+   end
+    it 'Comparamos que revista es mayor o igual que documentoe' do
+        expect(@revista >= @documentoe2).to eq(true)
+    end
+    it 'Comparamos que libro es menor o igual que documentoe' do
+        expect(@libraso <= @documentoe2).to eq(true)
+    end
+end
+
 end
  
