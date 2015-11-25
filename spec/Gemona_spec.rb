@@ -288,7 +288,7 @@ context "Prueba Lista enumerable" do
   
 
 
-context 'Bibliografia Enumerable' do
+context 'Bibliografia comparable' do
     
    before :each do 
        @libraso = Libro.new(["Dave Thomas, Andy Hunt, Chad Fowler"],"Programming Ruby 1.9 & 2.0: The Pragmatic Programmers","Guide. (The Facets of Ruby).","Pragmatic Bookshelf","4 edition","(July 7, 2013)",["ISBN-13: 978-1937785499,ISBN-10: 1937785491."],1)
