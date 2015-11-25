@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'spec_helper'
 require 'Gemona/biblio'
 require 'Gemona/lista'
