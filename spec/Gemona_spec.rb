@@ -322,3 +322,57 @@ end
 
 end
  
+ 
+ 
+ context 'APA' do
+    
+    before :all do
+      #creamos libros
+      @libraso1 = Libro.new(["Dave Thomas" , "Andy Hunt" , "Chad Fowler"],"Programming Ruby 1.9 , 2.0: The Pragmatic Programmers","Guide. (The Facets of Ruby).","Pragmatic Bookshelf","4 edition","Time.new(2013, 7, 7)",["ISBN-13: 978-1937785499,ISBN-10: 1937785491."],1)
+      @libraso2 = Libro.new(["Scott Chacon"],"Pro Git 2009th Edition"," (Pro). ","Apress","2009 edition","Time.new(2009, 9, 27)",["ISBN-13: 978-1430218333. ISBN-10: 1430218339."],2)
+      @libraso3 = Libro.new(["David Flanagan" , "Yukihiro Matsumoto"],"The Ruby Programming Language","","O’Reilly Media", "1 edition","Time.new(2008, 4, 2)",["ISBN-10: 0596516177. ISBN-13: 978-0596516178."],3)
+      @libraso4 = Libro.new(["David Chelimsky" , "Dave Astels" , "Bryan Helmkamp" , "Dan North" , "Zach Dennis" , "Aslak Hellesoy"],"The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends (The Facets of Ruby).","","Pragmatic Bookshelf", "1 edition","Time.new(2010, 12, 25)",["ISBN-10: 1934356379. ISBN-13: 978-1934356371."],4)
+      @libraso5 = Libro.new(["Richard E."],"Silverman Git Pocket Guide"," "," O’Reilly Media","1 edition","Time.new(2013, 9, 2)",["ISBN-10: 1449325866,ISBN-13: 978-1449325862."],5)
+     
+      #creamos lista
+      
+      @lista1 = Lista.new(nil,nil)
+      @lista1.insertar_varios([@libraso1,@libraso2,@libraso3,@libraso4,@libraso5]) 
+      #clase representacion
+      @repre = APA.new(@lista1)
+    end
+    it 'ordenar autores' do
+    
+       expect(@repre.ordeno(@libraso5.autores)).to eq(["E. Richard"])
+      
+    end 
+    
+    it 'ordenar autores 2' do
+      
+       expect(@repre.ordenar_autores()).to eq(nil)
+    
+    end 
+    
+    it 'Ordenacion por apellidos autores y año publicacion' do
+      @libraso1 = Libro.new(["Thomas Dave" , "Hunt Andy" , "Fowler Chad"],"Programming Ruby 1.9 , 2.0: The Pragmatic Programmers","Guide. (The Facets of Ruby).","Pragmatic Bookshelf","4 edition","Time.new(2013, 7, 7)",["ISBN-13: 978-1937785499,ISBN-10: 1937785491."],1)
+      @libraso2 = Libro.new(["Chacon Scott"],"Pro Git 2009th Edition"," (Pro). ","Apress","2009 edition","Time.new(2009, 9, 27)",["ISBN-13: 978-1430218333. ISBN-10: 1430218339."],2)
+      @libraso3 = Libro.new(["Flanagan David" , "Matsumoto Yukihiro"],"The Ruby Programming Language","","O’Reilly Media", "1 edition","Time.new(2008, 4, 2)",["ISBN-10: 0596516177. ISBN-13: 978-0596516178."],3)
+      @libraso4 = Libro.new(["Chelimsky David" , "Astels Dave" , "Helmkamp Bryan" , "North Dan" , "Dennis Zach" , "Hellesoy Aslak"],"The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends (The Facets of Ruby).","","Pragmatic Bookshelf", "1 edition","Time.new(2010, 12, 25)",["ISBN-10: 1934356379. ISBN-13: 978-1934356371."],4)
+      @libraso5 = Libro.new(["E. Richard"],"Silverman Git Pocket Guide"," "," O’Reilly Media","1 edition","Time.new(2013, 9, 2)",["ISBN-10: 1449325866,ISBN-13: 978-1449325862."],5)
+        expect(@repre.ordenar_lista()).to eq([@libraso2,@libraso4,@libraso5,@libraso3,@libraso1])
+    end
+    it '&&' do
+       expect(@repre.poner_ampersan(@libraso3.autores)).to eq("Flanagan David & Matsumoto Yukihiro") 
+    end
+    it 'ordenar autores 3' do
+      
+       expect(@repre.ordenar_ampersan()).to eq(nil)
+    
+    end 
+    it 'comprobar sangria' do
+        expect(@repre.to_s).to eq("   E. Richard")
+    end
+    it 'comprobar mayuscula' do
+        expect(@repre.mayus(@libraso1.titulo)).to eq(nil)
+    end
+end

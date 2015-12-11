@@ -17,8 +17,18 @@ include Comparable
    end
 
     def <=>(otro)
-        id<=>otro.id
-    end
+       if  to_s{2} != otro.to_s{2}
+            
+            to_s{2} <=> otro.to_s{2}
+            
+        elsif ((fecha.is_a? Time) && (otro.fecha.is_a? Time))
+            fecha.year <=> otro.fecha.year
+            else
+            return -1
+       end
+        
+    end    
+    
     
 end
 
